@@ -1,0 +1,85 @@
+# Import numpy
+import numpy as np
+import pandas as pd
+
+#c Assign the filename: file (general)
+file = 'C:\\Users\\antonin\\Desktop\\book1.csv'
+
+#c saving data using numpy:
+# data = np.genfromtxt(file, delimiter=',', names=True, dtype=None)
+# data = np.recfromcsv(file)
+
+#c print(data) from numpy data:
+# print(data['country'][0:1])
+
+# Read the file into a DataFrame: df (using pandas)
+df = pd.read_csv(file)
+
+# View the head of the DataFrame
+print(df.head())
+
+#######################################
+
+# Assign the filename: file
+file = 'digits.csv'
+
+# Read the first 5 rows of the file into a DataFrame: data
+data = pd.read_csv(file, nrows=5, header=None)
+
+# Build a numpy array from the DataFrame: data_array
+data_array = np.array(data.values)
+
+# Print the datatype of data_array to the shell
+print(type(data_array))
+print(data_array)
+
+########################################
+
+import pandas as pd 
+import matplotlib.pyplot as plt
+import numpy as np
+
+#Assign filename: file
+
+file = 'C:\\Users\\antonin\\Desktop\\Book1.csv'
+#Import file: data
+
+data = pd.read_csv(file)
+
+#Print the head of the DataFrame
+
+#print(data.head()) 
+data_array = np.array(data.values)
+
+#Plot 'Age' variable in a histogram
+pd.DataFrame.hist(data[['month']]) 
+plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12], ['1','2','3','4','5','6','7','8','9','10','11','12'])
+plt.xlabel('Month') 
+plt.ylabel('count') 
+plt.show()
+
+#####################################################
+import pandas as pd 
+import matplotlib.pyplot as plt
+import numpy as np
+import pylab
+
+#Assign filename: file
+
+file = 'C:\\Users\\antonin\\Desktop\\Book1.csv'
+#Import file: data
+
+data = pd.read_csv(file)
+
+#Print the head of the DataFrame
+
+#print(data.head()) 
+#data_array = np.array(data.values)
+vc_months = data['mnth'].value_counts()
+vc_mon = data['mnth'].value_counts().index.tolist()
+
+pylab.figure(1)
+x = range(12)
+pylab.xticks(x, vc_mon)
+pylab.plot(x,vc_months,"r")
+pylab.show()
