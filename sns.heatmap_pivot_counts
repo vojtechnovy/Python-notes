@@ -1,0 +1,24 @@
+#sns.set()  ##this shoud be in the import section
+
+y = df.groupby(["Proc_Person", "Raised_Month"]).size().reset_index(name="Count")
+
+# y.fillna(value=0) ## this doesn't really help for some reason
+# print(y[0:2]) ##check data
+# y.shape ##check shape
+
+## Creates pivot out of the dataset (can't contain duplicates)
+y_pivot = y.pivot("Proc_Person", "Raised_Month", "Count")
+
+# print(y_pivot)  ##check pivot
+
+## Draw a heatmap with the numeric values in each cell
+# sns.heatmap(y, annot=True, fmt="d", linewidths=.5) ## Old/classic heatmap
+
+## Final heatmap plot
+fig, ax = plt.subplots(figsize=(7,15))         ## Plot in case we need to change size (figsize in inches)
+ax.set_title('Tickets Processed')              ## Set's title above the plot
+sns.heatmap(y_pivot.iloc[:, 1:8:], annot=True, linewidths=.2, fmt='g', cmap='Blues', ax=ax) ##.iloc can limit the columns showed(Months in this case), annotations, linewidths, fmt='g' ensures that long numbers are showed properly, cmap changes colors
+
+# ax = sns.heatmap(y_pivot, mask=y_pivot.isnull(), annot=True)
+# plt.tight_layout()
+# plt.show()
