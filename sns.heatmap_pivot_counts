@@ -1,5 +1,6 @@
 #sns.set()  ##this shoud be in the import section
 
+## Takes "Proc_Person" and "Raised_Month" columns from dataset and appends "Count" column with counts of unique combinations of "Proc_Person" and "Raised_Month"
 y = df.groupby(["Proc_Person", "Raised_Month"]).size().reset_index(name="Count")
 
 # y.fillna(value=0) ## this doesn't really help for some reason
