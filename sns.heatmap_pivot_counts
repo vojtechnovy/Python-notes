@@ -17,7 +17,7 @@ y_pivot = y.pivot("Proc_Person", "Raised_Month", "Count")
 ## Final heatmap plot
 fig, ax = plt.subplots(figsize=(7,15))         ## Plot in case we need to change size (figsize in inches)
 ax.set_title('Tickets Processed')              ## Set's title above the plot
-sns.heatmap(y_pivot.iloc[:, 1:8:], annot=True, linewidths=.2, fmt='g', cmap='Blues', ax=ax) ##.iloc can limit the columns showed(Months in this case), annotations, linewidths, fmt='g' ensures that long numbers are showed properly, cmap changes colors
+sns.heatmap(y_pivot.iloc[:, 0:8:], annot=True, linewidths=.2, fmt='g', cmap='Blues', ax=ax) ##.iloc can limit the columns showed(Months in this case), annotations, linewidths, fmt='g' ensures that long numbers are showed properly, cmap changes colors
 
 # ax = sns.heatmap(y_pivot, mask=y_pivot.isnull(), annot=True)
 # plt.tight_layout()
